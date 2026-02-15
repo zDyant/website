@@ -8,6 +8,18 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/cinzel':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/geist':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/montserrat':
+        specifier: ^5.2.8
+        version: 5.2.8
+      '@fontsource/sorts-mill-goudy':
+        specifier: ^5.2.8
+        version: 5.2.8
       astro:
         specifier: ^5.7.6
         version: 5.7.6(rollup@4.40.1)(typescript@5.8.3)
