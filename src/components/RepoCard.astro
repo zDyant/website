@@ -28,7 +28,7 @@ import { Image } from 'astro:assets';
 <div class="section is-medium">
   <a class="repo-link" href={repo?.html_url}>
 
-    <div class="repo-box is-card columns is-mobile radius-xxl p-2">
+    <div class="repo-box is-card columns is-mobile radius-xxl p-2 mx-4">
 
       <!-- Use or not use is-narrow?-->
       <figure class="image column is-narrow">
@@ -40,7 +40,7 @@ import { Image } from 'astro:assets';
         <span class="title repo-title">{repo?.name}</span><br>
         <span class="subtitle repo-desc">{repo?.description}</span>
 
-        <div class="subtitle my-4">
+        <div class="subtitle my-4 stars">
           <span class="icon colorized"> <i class="fa-solid fa-star"></i></span>
           <span class="star-count colorized">{repo?.stargazers_count}</span>
         </div>
@@ -73,3 +73,56 @@ import { Image } from 'astro:assets';
     }
   }
 </style>
+
+<script>
+import { animate, hover, stagger, inView } from "motion";
+
+inView(".repo-box", (element) => {
+  
+  animate(
+    [
+      [
+        // repo card
+        element,
+        { opacity: [0, 1], y: [100, 0] },
+        { duration: 1, type: "spring" },
+      ],
+      [
+        // picture
+        element.querySelector("figure"),
+        { opacity: [0, 1], y: [30, 0], rotate: [12, 0], scale: [0.8, 1] },
+        { duration: 0.8, at: "<0.2", type: "spring", rotate: { ease: "easeOut" } }
+      ],
+      [
+        // text
+        element.querySelectorAll("div"),
+        { opacity: [0, 1], y: [30, 0] },
+        { duration: 0.8, delay: stagger(0.15), at: "<0.2", type: "spring" }
+      ]
+    ]
+  )
+  return () => animate(element, {opacity: 0})
+})
+
+hover(".repo-box", (element) => {
+  animate(
+    [
+      [
+        element,
+        { scale: 1.06 },
+        { duration: 0.6, type: "spring" },
+      ],
+    ]
+  )
+  return () => animate(
+    [
+      [
+        element,
+        { scale: 1 },
+        { duration: 0.4, type: "spring"}
+      ],
+    ]
+  )
+})
+
+</script>

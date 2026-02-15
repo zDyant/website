@@ -1,14 +1,5 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
 
-html {
-  scroll-behavior: smooth !important;
-}
-
-html,
-body {
-  font-family: 'Montserrat', sans-serif !important;
-}
-
 :root {
   --black-low-opacity:   rgba(0,0,0, 0.4);
   --black-mid-opacity:   rgba(0,0,0, 0.6);
@@ -44,13 +35,10 @@ a:hover .icon { color: white; }
   color: var(--accent-color) !important;
 }
 
-
 /* Dark mode */
 .dark-mode {
   --surface-color: #090A0C;
   --on-surface-color: #E5E5E5;
-
-
   background-color: var(--surface-color) !important;
 }
 
@@ -71,8 +59,7 @@ a:hover .icon { color: white; }
 
 .is-card,
 .is-floating {
-  background-color: var(--black-low-opacity);
-  backdrop-filter: saturate(400%) blur(16px);
+  backdrop-filter: saturate(200%) blur(16px);
   -webkit-backdrop-filter: saturate(400%) blur(16px);
 }
 

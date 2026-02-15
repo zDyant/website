@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 import '@fontsource/cinzel'
 ---
 <section class="hero is-fullheight">
@@ -7,37 +8,37 @@ import '@fontsource/cinzel'
   <div class="hero-body">
 
     <!-- Profile -->
-    <div class="section columns is-6 ">
+    <div class="section columns is-vcentered">
 
-      <figure class="image column is-two-thirds">
-        <Image inferSize={true} class="radius-xxl has-border has-shadow" id="avatar" src={data?.avatar_url ?? ''} alt={`${data?.name}'s profile`}>
+      <figure class="image column is-6">
+        <Image class="radius-xxl has-border has-shadow" id="avatar" src={logo} alt="Profile picture">
       </figure>
 
-      <div class="column text-content my-4 is-flex is-flex-direction-column is-justify-content-space-between">
-        <section>
-          <div class="title is-1 colorized" id="account-name">Hey, it's {data?.name ?? 'N/A'}</div>
-          <span class="subtitle" id="bio">"{data?.bio ?? 'No bio available'}"</span>
+      <div class="column is-7-desktop text-content is-flex is-flex-direction-column is-justify-content-space-evenly">
+        <section class="my-5">
+          <div class="title is-size-1 colorized" id="account-name"> zDyant </div>
+          <div class="subtitle is-size-4" id="bio">"Somewhat curious."</div>
         </section>
 
-        <section>
-          <div class="subtitle is-3 py-6">
-            Studying software engineering in brazil
+        <section class="my-5">
+          <div class="subtitle is-size-4-desktop">
+            Studying software engineering in Brazil
           </div>
         </section>
-        
+
         <section class="contact colorized">
 
-          <div class="subtitle is-4"> Contact me </div>
+          <div class="subtitle is-size-4-desktop p-2"> Contact me </div>
 
           <div class="subtitle has-text-left">
-            <a href="mailto:contact@zdyant.com" class="can-hover p-2 radius-xxl">
+            <a href="mailto:contact@zdyant.com" class="can-hover mx-1 p-2 radius-xxl">
               <span class="icon">
                 <i class="fa-solid fa-envelope"></i>
               </span>
               <span>contact@zdyant.com</span>
             </a>
 
-            <a href="#" class="can-hover p-2 radius-xxl">
+            <a href="#" class="can-hover mx-1 p-2 radius-xxl">
               <span class="icon">
                 <i class="fa-brands fa-discord"></i>
               </span>
@@ -47,7 +48,7 @@ import '@fontsource/cinzel'
 
         </section>
       </div>
-      
+
     </div>
   </div>
 </section>
@@ -60,8 +61,34 @@ import '@fontsource/cinzel'
   .colorized * {
     color: var(--accent-color);
   }
-  .contact a {
+  .contact {
     white-space: nowrap;
+  }
+  #account-name {
+    font-family: "cinzel";
+    font-weight: bolder;
+    word-break: keep-all;
   }
 
 </style>
+
+
+<script>
+import { animate, stagger } from "motion"
+
+animate(
+  [
+    [
+      ".hero figure",
+      { opacity: [0, 1], y: [100, 0], rotate: [6, 0] },
+      { duration: 1.6, type: "spring", rotate: { ease: "easeOut" }  }
+    ],
+    [
+      ".hero .title, .hero .subtitle",
+      { opacity: [0, 1], y: [20, 0] },
+      { duration: 1.0, type: "spring", delay: stagger(0.16), at: "<0.4", stiffness: 32 }
+    ],
+  ]
+)
+
+</script>

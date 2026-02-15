@@ -2,12 +2,11 @@
 import Default from '../layouts/Default.astro';
 import Hero from  '../components/Hero.astro';
 import RepoCard from '../components/RepoCard.astro';
-
 ---
 <Default title="Home">
 
   <!-- Profile header --------------------------------------------------- -->
-  <Hero username ="zDyant"/>      
+  <Hero username ="zDyant"/>
 
   <!-- Projects --------------------------------------------------------------- -->
     <!-- Title -->
@@ -23,3 +22,16 @@ import RepoCard from '../components/RepoCard.astro';
   </div>
 <div class="clip"></div>
 </Default>
+
+<script>
+import { animate, inView } from "motion";
+
+inView("#projects", (element) => {
+  animate(
+    element,
+    { y: [100, 0], opacity: [0, 1] },
+    { duration: 1.2, delay: 0.4, type: "spring", ease: "easeOut" }
+  )
+}, { margin: "-10px" })
+</script>
+
