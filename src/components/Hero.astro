@@ -1,10 +1,5 @@
 ---
-const { username } = Astro.props;
 import { Image } from 'astro:assets';
-
-
-import { fetchGithubUser } from '../scripts/get_user_github.js';
-const data = await fetchGithubUser(username);
 import '@fontsource/cinzel'
 ---
 <section class="hero is-fullheight">
